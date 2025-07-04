@@ -50,17 +50,21 @@ const Signup = () => {
                             'Authorization': 'Bearer your_token_here'
                           }
         })
+  
+        if(response.data.success){
 
+          let getAction = window.confirm("signup success to login ") ; 
+             getAction ? location("/login") :  location("/signup")
+        }
+        else{
+             window.alert(response.data.message)
+        }
 
-         let getAction = window.confirm("signup success to login ") ; 
-
-         console.log(response)
-
-         getAction ? location("/login") :  location("/signup")
         }
         catch(error){
             
           console.log(error)
+          window.alert(error.message)
            
         }
        
