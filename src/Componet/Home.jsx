@@ -9,9 +9,12 @@ import axios from "axios" ;
 
 const Home = () => {
 
-  const  [allProduct , setAllProduct] = useState([])
+  const  [allProduct , setAllProduct] = useState([]) ;
+  const [search , setSearch]          = useState("") ;
+  const [noSearchVal , setNoSearchVal]  = useState(false)
     let cookie = new Cookies() ; 
      let navigate = useNavigate();
+
 
      useEffect(()=>{
             let getToken = cookie.get("loginToken")  ;
@@ -20,6 +23,7 @@ const Home = () => {
                      navigate("/login")
             }
      } , [])
+
 
      useEffect(()=>{
            
@@ -39,9 +43,47 @@ const Home = () => {
         
      } , [])
 
+
+     const handleSearch = ()=>{ 
+
+       if(search == ""){           
+         axios({
+               method : "get" , 
+               url : "http://localhost:3500/allProducts" 
+         })
+         .then((data)=>{
+         
+                 setAllProduct(data.data.products)
+         })
+         .catch((error)=>{
+           console.log(error)
+         })     
+       }
+       
+         
+      let searchProductList   =  allProduct.filter((el, index)=>{ 
+                 if(el.productDescription.toLowerCase().includes(search.toLowerCase()) || 
+                 el.productName.toLowerCase().includes(search.toLowerCase())  ||
+                 el.productcategory.toLowerCase().includes(search.toLowerCase()) 
+                ){
+
+                  return el
+                  
+                }
+                  
+          })
+
+          setAllProduct(searchProductList)
+          
+
+     }
+
+     
+
   return (
     <div> 
-        <Header/>
+        <Header   setSearch={setSearch} search={search} handleSearch={handleSearch} />
+
         Welcome to Home page....
    <br /> 
    <br />

@@ -33,7 +33,14 @@ const AddProduct = () => {
      const handleInputVal = (e)=>{
             let input = e.target ;
             let name = input.name ;
-            let val = input.value  
+            let val ;
+            if(input.type == "file"){
+                 val = input.files
+                 console.log(val)
+            }else{
+              val = input.value  
+            }
+
 
             setInputVal((oldData)=>{
                    return {
@@ -53,7 +60,9 @@ const AddProduct = () => {
 
         let getRes =  await handleApi(formData)  ;
 
+  alert("Product uploaded success ful") ;
         console.log(getRes)
+
           
           setInputVal({
              productName  : ''  ,
@@ -63,6 +72,8 @@ const AddProduct = () => {
           })
 
           form.reset() ;
+
+         navigate("/")
          
     }
 
@@ -127,6 +138,7 @@ const AddProduct = () => {
                              <option>Bike</option>
                              <option>car</option>
                              <option>Phone</option>
+                             <option>Cloth</option>
                           </select>
                        </div>
 
