@@ -30,3 +30,19 @@ Day -2
 - 🎨 **Styled with Tailwind CSS** for card and form layout
 
 ---
+
+Day -3 
+---
+
+✅ Implemented **Product Search** functionality using React.js  
+✅ Handled **input keyword via child component state lifting**  
+✅ Filtered product list using `Array.filter()` based on:
+   - product name  
+   - description  
+   - category  
+✅ Used `.toLowerCase()` + `.includes()` to make search case-insensitive  
+✅ Stored filtered array in state and dynamically rendered search results  
+
+🛠️ Technologies: React.js | State Lifting | Controlled Input | Array.filter()
+
+---
