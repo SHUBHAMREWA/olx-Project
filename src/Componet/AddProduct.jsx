@@ -23,6 +23,7 @@ const AddProduct = () => {
         let token = cookie.get("loginToken") ;
 
         if(!token){
+           window.alert("login first")
             navigate("/login")
         }
           
@@ -139,6 +140,7 @@ const AddProduct = () => {
                              <option>car</option>
                              <option>Phone</option>
                              <option>Cloth</option>
+                             <option>Laptop</option>
                           </select>
                        </div>
 

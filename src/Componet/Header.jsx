@@ -21,28 +21,48 @@ const Header = ({ setSearch , search , handleSearch}) => {
 
              
  
-              <div className="flex  items-center gap-6 justify-start">
+              <div className="flex  items-center gap-6 justify-between">
 
-                    <span><Link className="text-blue-500 shadow-md underline underline-offset-4" to="/"> Home </Link> </span> 
+                    <span><Link className="text-cyan-900 uppercase font-bold text-2xl" to="/"> Home </Link> </span> 
 
-                   <div className="flex items-center justify-between">
+
+{/* search bar */}
+                   <div className="flex-grow flex items-center justify-between">
+
                      <input type="text"
                        value = {search && search}
                        onChange={(e)=> setSearch && setSearch(e.target.value)} 
-                       className="border-black border-2 p-2 outline-blue-500 border-e-0  rounded-sm m-0" /> 
+                       placeholder="Search Your Product"
+                       className="flex-grow border-black border-2  p-2 outline-blue-500 border-e-0  rounded-sm m-0" /> 
                     <button  
-                     onClick={handleSearch && handleSearch }
+                     onClick={()=>handleSearch && handleSearch(search && search) }
                     className=" outline-none bg-cyan-900 p-3 text-white text-2xl  border-s-0  " ><FaSearch /></button> </div>
+                
+                {/* ADD  product Btn */}
+                    <Link
+                    className="text-white hover:bg-cyan-800 bg-cyan-900 px-3 py-2 rounded-md "
+                    to="/add-product"
+                    >
+                    Add Product
+                    </Link>
+
+                    {/* wishlist btn  or faviroure product btn*/} 
+                   <Link
+                    className="text-white hover:bg-cyan-800 bg-cyan-900 px-3 py-2 rounded-md "
+                    to="/liked-product"
+                    >
+                    Wishlists
+                    </Link>
 
 
                       <span >      
                    {
                   //    {/* if token found the login button not showing here */}
                          !token  ?
-                            <Link className="text-blue-500 shadow-md" to="/login"> Login </Link>
+                            <Link className="text-white hover:bg-cyan-800 bg-cyan-900 px-3 py-2 rounded-md" to="/login"> Login </Link>
                             : <button
                              onClick={logOut}
-                             className="outline outline-1 shadow-md px-2 ms-2" > LogOut </button>
+                             className="text-white hover:bg-cyan-800 bg-cyan-900 px-3 py-2 rounded-md" > LogOut </button>
                     }
                   </span>
 

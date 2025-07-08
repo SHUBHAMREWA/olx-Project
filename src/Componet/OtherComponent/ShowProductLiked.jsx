@@ -2,7 +2,7 @@ import { FaHeart } from "react-icons/fa";
 
 
 
-const ShowAllProduct = ({proDis ,proName , proPrice , proCate , proImg, proId , LikedProducts}) => {
+const Showwishlist = ({proDis ,proName , proPrice , proCate , proImg, proId , LikedProducts}) => {
   return (
 
      <div className="w-80 bg-white border rounded-md shadow-sm overflow-hidden hover:shadow-lg transition">
@@ -11,7 +11,7 @@ const ShowAllProduct = ({proDis ,proName , proPrice , proCate , proImg, proId , 
        
         <button 
         onClick={()=> proId && LikedProducts && LikedProducts(proId)} 
-        className="absolute top-2 right-2 bg-black text-white rounded-full p-2 hover:text-red-600 text-lg shadow-sm">
+        className="absolute top-2 right-2 bg-black hover:text-white rounded-full p-2 text-red-600 text-lg shadow-sm">
             <FaHeart/> 
         </button>
       </div>
@@ -27,4 +27,4 @@ const ShowAllProduct = ({proDis ,proName , proPrice , proCate , proImg, proId , 
   )
 }
 
-export default ShowAllProduct
+export default Showwishlist

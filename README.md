@@ -46,3 +46,82 @@ Day -3
 🛠️ Technologies: React.js | State Lifting | Controlled Input | Array.filter()
 
 ---
+
+Day - 4 
+---
+
+## ❤️ Wishlist Feature - OLX Clone (MERN Stack)
+
+### 📌 What I did today:
+
+- Added **wishlist (Add to Favourite)** feature to the OLX-like app.
+- Each product now has a ❤️ like button on the UI.
+- When clicked, it sends the product's `ObjectId` and user's auth token to the server using a **POST** request.
+
+### 🧠 Backend Logic:
+
+- The product `ObjectId` is saved in the user's `likedProducts` array in MongoDB.
+- Created `/liked-products` API endpoint to **add a liked product**.
+- Created `/get-liked-products` POST endpoint to **fetch full details** of all liked products using MongoDB `$in` query.
+
+### 🧩 Frontend Logic:
+
+- Used state lifting to manage liked status.
+- Created a separate `Wishlist` component to show liked items.
+- http request to send likeProduct details  like this -
+
+-   const LikedProducts = async(id)=>{
+
+        let token = cookie.get("loginToken")   ;    
+       
+        try{
+
+                     let response = await axios({
+                                    method : "POST" ,
+                                    url :  "/liked-products" , 
+                                    data  : {
+                                          token : token , 
+                                          productId : id  }
+                                  })
+
+         console.log(response) ;
+         alert("product added to wishlist") ;
+
+      }
+      catch(error){
+         alert("not added to wishlist")
+      }      
+   
+}
+--
+- HTTP Request to fetch data in LikeProduct Componet 
+
+ useEffect(()=>{
+  
+        let token = cookie.get("loginToken") ;
+        
+          axios({
+                  method : "post" , 
+                  url : "/get-liked-products" ,
+                  data : { token }
+          })
+          .then((result)=>{
+
+             console.log(result.data.success)
+             console.log(result.data)
+       
+              if(result.data.success){                                 
+                setLikedProducts(result.data.lproducts)
+                 }
+
+          })
+          .catch((error)=>{
+             alert("server error")
+          })
+          
+    } , [])
+
+
+---
+
+
