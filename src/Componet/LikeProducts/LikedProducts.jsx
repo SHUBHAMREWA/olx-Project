@@ -4,23 +4,26 @@ import Header from "../Header" ;
 import Cookies from "universal-cookie";
 import axios from "axios";
 import Showwishlist from "../OtherComponent/ShowProductLiked";
-
+import { useNavigate } from "react-router-dom";
 
 axios.defaults.baseURL = "http://localhost:3500/"
 
 const LikedProducts = () => {
  
     let cookie =  new Cookies() 
+    let navigate  = useNavigate()
        
 
     const [likedProducts , setLikedProducts]  = useState([]) ;  
 
-    console.log(likedProducts)
+    // console.log(likedProducts)
 
 
     useEffect(()=>{
   
         let token = cookie.get("loginToken") ;
+
+        if(!token) navigate("/login")
 
           axios({
              method : "post" , 
@@ -31,8 +34,8 @@ const LikedProducts = () => {
           })
           .then((result)=>{
 
-             console.log(result.data.success)
-             console.log(result.data)
+            //  console.log(result.data.success)
+            //  console.log(result.data)
        
               if(result.data.success){  
                                

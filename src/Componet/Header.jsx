@@ -47,16 +47,17 @@ const Header = ({ setSearch , search , handleSearch}) => {
                     </Link>
 
                     {/* wishlist btn  or faviroure product btn*/} 
-                   <Link
+
+              {  token &&    <Link
                     className="text-white hover:bg-cyan-800 bg-cyan-900 px-3 py-2 rounded-md "
                     to="/liked-product"
                     >
                     Wishlists
                     </Link>
-
+                   }
 
                       <span >      
-                   {
+                   { 
                   //    {/* if token found the login button not showing here */}
                          !token  ?
                             <Link className="text-white hover:bg-cyan-800 bg-cyan-900 px-3 py-2 rounded-md" to="/login"> Login </Link>

@@ -1,11 +1,22 @@
 import { FaHeart } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 
 
-const ShowAllProduct = ({proDis ,proName , proPrice , proCate , proImg, proId , LikedProducts}) => {
+  
+
+const ShowAllProduct = ({proDis ,proName , proPrice , proCate , proImg, proId , LikedProducts }) => {
+
+       let navigate = useNavigate()  ;
+
+    const  showProductDetails = async(id)=>{  
+                navigate("/product/"+id)  
+    }
+
   return (
 
-     <div className="w-80 bg-white border rounded-md shadow-sm overflow-hidden hover:shadow-lg transition">
+     <div onClick={()=> showProductDetails(proId)}
+       className="w-80 bg-white border rounded-md shadow-sm overflow-hidden hover:shadow-lg transition">
       <div className="relative">
         <img src={proImg && proImg} alt="item" className="w-full h-44 object-cover" />
        

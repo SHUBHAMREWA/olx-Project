@@ -124,4 +124,67 @@ Day - 4
 
 ---
 
+Day 5
+---
+
+## 🔍 Product View Feature
+
+Implemented **Product Details View** for each product using **React Router**, dynamic route params, and backend API integration.
+
+---
+
+### 🛣️ Routing Setup
+
+A new route is added for viewing a single product:
+
+```js
+{
+  path: "/product/:id",
+  element: <ProductDetails />
+}
+When a user clicks on any product card, the app navigates to the dynamic route /product/:id.
+
+🎯 OnClick Navigation
+In the product card component, we use useNavigate from react-router-dom to move to product details page:
+
+js
+
+
+import { useNavigate } from 'react-router-dom';
+
+const navigate = useNavigate();
+
+const handleClick = (id) => {
+  navigate(`/product/${id}`);
+};
+
+
+Then apply it on card:
+<div onClick={() => handleClick(product._id)} className="cursor-pointer">
+  {/* Product Card */}
+</div>
+
+
+🧩 ProductDetails Component
+We use useParams to get the product ID from the URL:
+
+import { useParams } from 'react-router-dom';
+
+const { id } = useParams();
+Now send an API request to get the product details:
+
+js
+
+
+useEffect(() => {
+  const fetchProduct = async () => {
+    let res = await axios.post("http://localhost:3500/single-product", { productId: id });
+    setProduct(res.data);
+  };
+
+  fetchProduct();
+}, []);
+
+---
+
 

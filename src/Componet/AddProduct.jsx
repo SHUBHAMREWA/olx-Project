@@ -51,6 +51,8 @@ const AddProduct = () => {
             })
      }
 
+//  onSubmit function on Form
+
     const handleFormData = async(e)=>{
 
         e.preventDefault() ;
@@ -78,6 +80,8 @@ const AddProduct = () => {
          
     }
 
+
+    // Add product send Data in SERVER through API
     
      const handleApi = async(formData)=>{
 

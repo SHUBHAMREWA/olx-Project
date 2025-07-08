@@ -125,6 +125,8 @@ const LikedProducts = async(id)=>{
    
 }
 
+
+
   return (
     <div>
       <Header
@@ -152,7 +154,8 @@ const LikedProducts = async(id)=>{
                 proCate={el.productcategory}
                 proImg={el.productImage}
                 proId = {el._id} 
-                LikedProducts = {LikedProducts} 
+                LikedProducts = {LikedProducts}  
+             
               />
             );
           })}

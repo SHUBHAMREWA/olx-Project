@@ -3,6 +3,7 @@ import Login from "./Componet/Login";
 import Signup from "./Componet/Signup";
 import AddProduct from "./Componet/AddProduct";
 import LikedProducts from "./Componet/LikeProducts/LikedProducts"; 
+import ProductDetails from "./Componet/ProductDetails/ProductDetails";
 
 // all routes are Here and we make a different path for different COMPONENT 
 
@@ -35,6 +36,11 @@ const routes = [
   {
     path : "/liked-product" , 
     element : <LikedProducts/>
+  }
+  ,
+  {
+    path : "/product/:id" , 
+    element : <ProductDetails/>
   }
 ];
 
