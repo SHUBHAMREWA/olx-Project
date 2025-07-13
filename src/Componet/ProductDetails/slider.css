@@ -1,0 +1,24 @@
+
+
+
+.slick-slide.slick-cloned {
+  display: none !important;
+}
+
+
+/* Common styling */
+.slick-prev::before,
+.slick-next::before {
+  color: white;               /* Arrow color */
+  font-size: 30px;            /* Arrow size */
+  background-color: black;    /* Background */
+  /* padding: 10px; */
+  border-radius: 50%;
+  opacity: 1;                 /* Full visibility */
+}
+
+/* Optional: Hover effect */
+.slick-prev:hover::before,
+.slick-next:hover::before {
+  background-color: orange;
+}

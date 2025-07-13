@@ -12,7 +12,7 @@ const Login = () => {
   let location = useNavigate();
 
   const [input, setInput] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
@@ -62,14 +62,14 @@ const Login = () => {
     <div>
       <Header />
 
-      <div className="flex flex-col justify-between gap-7 items-center mt-5 ">
-        Welcome to Login
-        <form onSubmit={handleApi} className="">
-          UserName
+      <div className=" flex flex-col justify-between gap-7 items-center mt-5 ">
+               <span className="text-blue-400 font-semibold text-2xl">  Welcome to Login page  </span> 
+         <form onSubmit={handleApi} className="w-[70%] ">
+             Email
           <input
-            className=" ml-2 outline-1 outline-blue-600 p-1  bg-gray-300"
+            className="w-full ml-2 outline-1 outline-blue-600 p-2  bg-gray-300"
             type="text"
-            name="username"
+            name="email"
             onChange={changeValue}
             value={input.username}
           />{" "}
@@ -77,7 +77,7 @@ const Login = () => {
           <br />
           Password
           <input
-            className="ml-2 outline-1 outline-blue-600 p-1 bg-gray-300"
+            className="w-full ml-2 outline-1 outline-blue-600 p-2 bg-gray-300"
             type={showPass ? "password" : "text"}
             name="password"
             onChange={changeValue}
@@ -91,10 +91,10 @@ const Login = () => {
             </button>
           </div>
           <br />
-          <button type="submit" className="border border-blue-500 p-2">
+          <button type="submit" className="border border-blue-500 bg-blue-400 p-2 me-2 rounded-md">
             Login
           </button>
-          <Link to="/signup">SignUp</Link>
+          <Link className="underline underline-offset-8 hover:underline-offset-2 transition-all decoration-blue-500" to="/signup">SignUp</Link>
         </form>
       </div>
     </div>

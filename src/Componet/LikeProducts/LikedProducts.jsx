@@ -34,7 +34,7 @@ const LikedProducts = () => {
           })
           .then((result)=>{
 
-            //  console.log(result.data.success)
+            //  console.log(result.data.lproducts)
             //  console.log(result.data)
        
               if(result.data.success){  

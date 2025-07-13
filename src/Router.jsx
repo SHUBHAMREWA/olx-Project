@@ -4,6 +4,7 @@ import Signup from "./Componet/Signup";
 import AddProduct from "./Componet/AddProduct";
 import LikedProducts from "./Componet/LikeProducts/LikedProducts"; 
 import ProductDetails from "./Componet/ProductDetails/ProductDetails";
+import CategoryPage from "./Componet/CategoryPage/CategoryPage";
 
 // all routes are Here and we make a different path for different COMPONENT 
 
@@ -41,6 +42,10 @@ const routes = [
   {
     path : "/product/:id" , 
     element : <ProductDetails/>
+  }
+  ,{
+     path : "/category/:catName" , 
+     element : <CategoryPage/>
   }
 ];
 

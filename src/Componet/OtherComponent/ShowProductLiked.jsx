@@ -7,7 +7,7 @@ const Showwishlist = ({proDis ,proName , proPrice , proCate , proImg, proId , Li
 
      <div className="w-80 bg-white border rounded-md shadow-sm overflow-hidden hover:shadow-lg transition">
       <div className="relative">
-        <img src={proImg && proImg} alt="item" className="w-full h-44 object-cover" />
+        <img src={proImg && proImg[0]} alt="item" className="w-full h-44 object-cover" />
        
         <button 
         onClick={()=> proId && LikedProducts && LikedProducts(proId)} 

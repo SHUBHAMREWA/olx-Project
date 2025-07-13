@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import Cookies from "universal-cookie"  ;
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
-import axios from 'axios'
+import axios from 'axios' 
+import categorys from "../jsonFiles/catergories.json" ;
 
 const AddProduct = () => {
  
@@ -37,7 +38,6 @@ const AddProduct = () => {
             let val ;
             if(input.type == "file"){
                  val = input.files
-                 console.log(val)
             }else{
               val = input.value  
             }
@@ -63,8 +63,8 @@ const AddProduct = () => {
 
         let getRes =  await handleApi(formData)  ;
 
-  alert("Product uploaded success ful") ;
-        console.log(getRes)
+         alert("Product uploaded success ful") ;
+      
 
           
           setInputVal({
@@ -85,15 +85,20 @@ const AddProduct = () => {
     
      const handleApi = async(formData)=>{
 
+        let token = cookie.get("loginToken") ;
+
          try{
              let response = await axios({ 
                        method : "POST" , 
                        url : "http://localhost:3500/product-details" ,
                        data : formData , 
                      headers: {
-                             "Content-Type": "multipart/form-data"
+                             "Content-Type" : "multipart/form-data" , 
+                             'Authorization' : token
                                   }
              })
+              
+            //  console.log(response) ;
 
              return response ;
          }
@@ -139,19 +144,19 @@ const AddProduct = () => {
                            <select className="w-full p-2 rounded-md outline-blue-500" 
                            onChange={handleInputVal}
                            name="productcategory" value={inputVal.productcategory} >
-                             <option>---Select---</option>
-                             <option>Bike</option>
-                             <option>car</option>
-                             <option>Phone</option>
-                             <option>Cloth</option>
-                             <option>Laptop</option>
+                             <option  hidden>---Select---</option>
+                              {
+                                categorys && categorys.length > 0 && categorys.map((el , index)=>{ 
+                                         return <option  key={index} className="bg-gray-2000 shadow-lg" >{el}</option>
+                                })
+                              }
                           </select>
                        </div>
 
 
                        <div>
                            <label>Product Images</label>
-                           <input name="productImage"  className=" bg-white p-2 w-full rounded-md" type="file" accept="image/*"  multiple  onChange={handleInputVal} />
+                           <input name="productImage"  multiple className=" bg-white p-2 w-full rounded-md" type="file" accept="image/*"   onChange={handleInputVal} />
                        </div>
 
 

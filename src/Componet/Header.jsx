@@ -17,10 +17,7 @@ const Header = ({ setSearch , search , handleSearch}) => {
     return (
 
         <div>
-            <div className=" p-4 text-lg  shadow-md"> 
-
-             
- 
+            <div className=" p-4 text-lg  shadow-sm">           
               <div className="flex  items-center gap-6 justify-between">
 
                     <span><Link className="text-cyan-900 uppercase font-bold text-2xl" to="/"> Home </Link> </span> 

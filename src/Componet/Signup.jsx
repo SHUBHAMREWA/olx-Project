@@ -12,7 +12,10 @@ const Signup = () => {
 
     const [input ,setInput] =  useState({ 
            username : "" , 
-           password : ""
+            mobile : "" ,
+            email    : "" , 
+           password : "" 
+         
     })
 
     const [showPass , setShowPass] = useState(true)  
@@ -67,12 +70,9 @@ const Signup = () => {
           window.alert(error.message)
            
         }
-       
-
     }
 
-    
-
+  
 
 
 
@@ -82,22 +82,37 @@ const Signup = () => {
         <Header/>
 
         <div className="flex flex-col justify-between gap-7 items-center mt-5 ">
-        Welcome to SignUp
+          <span className="text-blue-400 font-semibold text-2xl">  Welcome to SignUp Page </span>
          <form onSubmit={handleApi}
-          className="">
-
-
+         
+          className="w-[80%] flex justify-center flex-col items-start">            
             UserName
-            <input className=" ml-2 outline-1 outline-blue-600 p-1  bg-gray-300" type="text"   
+            <input className="w-full ml-2 outline-1 outline-blue-600 p-2  bg-gray-300" type="text"   
             name="username"
             onChange={changeValue}
             value={input.username}
-            /> <br />
+            />
             <br />
+            <br />
+            Mobile
+            <input className="w-full ml-2 outline-1 outline-blue-600  p-2 bg-gray-300" type="text"   
+            name="mobile"
+            onChange={changeValue}
+            value={input.mobile}
+            />
+            <br />
+            <br />
+            Email    
+            <input className="w-full ml-2 outline-1 outline-blue-600 p-2  bg-gray-300" type="text"   
+            name="email"
+            onChange={changeValue}
+            value={input.email}
+            />
 
-
+           <br />
+           <br />
             Password
-            <input className="ml-2 outline-1 outline-blue-600 p-1 bg-gray-300"  type={showPass ? "password" : "text"}  
+            <input className="w-full ml-2 outline-1 outline-blue-600 p-2 bg-gray-300"  type={showPass ? "password" : "text"}  
             name="password"
             onChange={changeValue} 
             value={input.password}
@@ -109,10 +124,12 @@ const Signup = () => {
             >  { showPass ? <FaEye/> : <FaEyeSlash/>} </button></div>
 
             <br />
-          
-            <button type="submit" className="border border-blue-500 p-2" >SignUp</button>
-            <Link to="/login">Login</Link>
-          
+           
+           <div>
+            <button type="submit" className="border border-blue-500 p-2 bg-blue-400 rounded-md me-3" >SignUp</button>
+            <Link className="underline underline-offset-8 hover:underline-offset-2 transition-all decoration-blue-500" to="/login"> Login</Link>
+          </div>
+
          </form>
 
          </div>

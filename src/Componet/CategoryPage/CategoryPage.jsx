@@ -1,24 +1,28 @@
-import Header from "./Header";
+import Header from "../Header";
 import Cookies from "universal-cookie";
 import { useNavigate, Link } from "react-router-dom";
-import ShowAllProduct from "./OtherComponent/ShowAllProduct";
-import Categories from "./Categories";
+import ShowAllProduct from "../OtherComponent/ShowAllProduct";
+import Categories from "../Categories";
 import { useEffect, useState } from "react";
 
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 
 axios.defaults.baseURL = "http://localhost:3500/"
 
-const Home = () => {
+const Home = () => { 
+
+     let {catName}  = useParams() 
 
 
-  const [allProduct, setAllProduct] = useState([]) ;
+
+  const [CateProduct, setCateProduct] = useState([]) ;
   const [sSroduct , setsSroducts]   = useState("") ;
 
   const [search, setSearch]         = useState("")  ;
   let cookie = new Cookies();
-  let navigate = useNavigate();
+
 
   // useEffect(() => {
   //   let getToken = cookie.get("loginToken");
@@ -35,21 +39,22 @@ const Home = () => {
   useEffect(() => {
     axios({
       method: "get",
-      url: "/allProducts",
+      url: "/searchbycategory/?catename=" + catName
     })
       .then((data) => {
-        setAllProduct(data.data.products);
+        setCateProduct(data.data.categoryProducts)
         // console.log("data aa gaya")
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [catName]);
 
 
   // input keyword search function api request  
   const handleSearch = async(itemSearch) => {
-    
+
+         
     try{ 
          let response = await axios({
             method : "get" , 
@@ -146,15 +151,15 @@ const LikedProducts = async(id)=>{
 {/* ---------------------------------------------------------- */}
 
      
-    { !search &&  <h2 className="mb-1 text-2xl mt-5 font-semibold " >Fresh recommendations</h2> }
+    { !search &&  <h2 className=" text-2xl mt-5 font-semibold mb-4 " >Category Products</h2> }
 
       {/* all Product show  */}
     {  
      !search &&  
       <div className="flex flex-wrap gap-2 justify-around ">
-        {allProduct &&
-          allProduct.length > 0 &&
-          allProduct.map((el, index) => {
+        {CateProduct &&
+          CateProduct.length > 0 &&
+          CateProduct.map((el, index) => {
             // console.log(el)
             return (
               <ShowAllProduct

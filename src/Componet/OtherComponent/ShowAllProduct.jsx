@@ -15,16 +15,21 @@ const ShowAllProduct = ({proDis ,proName , proPrice , proCate , proImg, proId , 
 
   return (
 
-     <div onClick={()=> showProductDetails(proId)}
-       className="w-80 bg-white border rounded-md shadow-sm overflow-hidden hover:shadow-lg transition">
-      <div className="relative">
-        <img src={proImg && proImg} alt="item" className="w-full h-44 object-cover" />
-       
+     <div 
+       className="w-80 relative bg-white border rounded-md shadow-sm overflow-hidden hover:shadow-lg transition"> 
+
         <button 
         onClick={()=> proId && LikedProducts && LikedProducts(proId)} 
         className="absolute top-2 right-2 bg-black text-white rounded-full p-2 hover:text-red-600 text-lg shadow-sm">
             <FaHeart/> 
         </button>
+
+      <div onClick={()=> showProductDetails(proId)}>
+
+        <img src={proImg &&  proImg[0]} alt="item" className="w-full h-44 object-cover" />
+       
+       
+
       </div>
       <div className="p-3">
         <h3 className="text-lg font-bold text-gray-800">₹ {proPrice && proPrice}</h3>
