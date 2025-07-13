@@ -187,4 +187,29 @@ useEffect(() => {
 
 ---
 
+Day 6 
+--- 
+---
 
+## 🔍 Search API for Single Product Details
+
+Implemented a dedicated **Search API** using dynamic Route to fetch a single product based on keyword matching.
+
+### ✅ Backend API Endpoint:
+**Route**: `http://localhost:3500/product/${id}`
+
+**Method**: `GET`
+
+### 🧠 Logic:
+Using MongoDB's `$or` and `$regex` operators to match search keyword with multiple fields.
+
+```js
+Product.find({
+  $or: [
+    { productName: { $regex: search, $options: "i" } },
+    { productCategory: { $regex: search, $options: "i" } },
+    { productDescription: { $regex: search, $options: "i" } }
+  ]
+})
+
+---
